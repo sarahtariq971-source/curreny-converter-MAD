@@ -75,14 +75,15 @@
 //   }
 // }
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:currency_converter/screens/home_screen.dart';
-// import 'package:currency_converter/services/exchange_service.dart'; // Remove this
-import 'package:currency_converter/services/free_exchange_service.dart'; // Add this
+import 'package:currency_converter/services/exchange_service.dart'; // Remove this
+// import 'package:currency_converter/services/free_exchange_service.dart'; // Add this
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await dotenv.load(fileName: ".env"); // Remove this line if not using .env
+  await dotenv.load(fileName: ".env"); // Remove this line if not using .env
   runApp(const MyApp());
 }
 
@@ -94,8 +95,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          // create: (_) => ExchangeService(), // Remove this
-          create: (_) => FreeExchangeService(), // Add this
+          create: (_) => ExchangeService(), // Remove this
+          // create: (_) => FreeExchangeService(), // Add this
         ),
       ],
       child: MaterialApp(
